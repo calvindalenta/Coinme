@@ -23,10 +23,10 @@ class Api {
         return Promise.resolve(mockProfile)
     }
 
-    postProfile(token, name, gender, birthday, hometown, bio) {
+    postProfile(currentProfile, token, name, gender, birthday, hometown, bio) {
         if (!token) throw Error("Missing required parameter 'token'");
         const newProfile = { 
-            ...mockProfile,
+            ...currentProfile,
             name,
             gender,
             birthday,
@@ -36,19 +36,19 @@ class Api {
         return Promise.resolve(newProfile)
     }
 
-    postProfilePicture(token, imageUrl) {
+    postProfilePicture(currentProfile, token, imageUrl) {
         if (!token) throw Error("Missing required parameter 'token'");
         const newProfile = { 
-            ...mockProfile,
+            ...currentProfile,
             user_picture: imageUrl
         }
         return Promise.resolve(newProfile)
     }
 
-    postCoverImage(token, imageUrl) {
+    postCoverImage(currentProfile, token, imageUrl) {
         if (!token) throw Error("Missing required parameter 'token'");
         const newProfile = { 
-            ...mockProfile,
+            ...currentProfile,
             cover_picture: {
                 url: imageUrl
             }
@@ -56,10 +56,10 @@ class Api {
         return Promise.resolve(newProfile)
     }
 
-    postCareer(token, companyName, startingFrom, endingIn) {
+    postCareer(currentProfile, token, companyName, startingFrom, endingIn) {
         if (!token) throw Error("Missing required parameter 'token'");
         const newProfile = { 
-            ...mockProfile,
+            ...currentProfile,
             career: {
                 company_name: companyName,
                 starting_from: startingFrom,
@@ -69,10 +69,10 @@ class Api {
         return Promise.resolve(newProfile)
     }
 
-    postEducation(token, schoolName, graduationTime) {
+    postEducation(currentProfile, token, schoolName, graduationTime) {
         if (!token) throw Error("Missing required parameter 'token'");
         const newProfile = { 
-            ...mockProfile,
+            ...currentProfile,
             education: {
                 school_name: schoolName,
                 graduation_time: graduationTime,
