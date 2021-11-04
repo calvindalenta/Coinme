@@ -1,14 +1,15 @@
 import Header from "../../components/Header";
 import Register from "../../components/Register";
-import "./RegisterPage.scss";
+
+import AppContainer from "../../styled/AppContainer";
 
 export default function RegisterPage(props){
     document.title = "Coinme - Register";
 
     return (
-        <div className="app">
+        <AppContainer>
             <Header />
             <Register />
-        </div>
+        </AppContainer>
     );
 }

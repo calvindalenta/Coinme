@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 
 import { register } from "../../../state/ducks/profile/actions";
 
-import Date from "../Date";
-import RegisterForm from "./RegisterForm";
+import Date from "../../UI/Date";
+import ContentContainer from "../../styled/ContentContainer";
+import NavList from "../../styled/NavList";
 
-import "./Register.scss";
+import RegisterForm from "./RegisterForm";
 
 export function Register({ register }){
 
@@ -18,14 +19,14 @@ export function Register({ register }){
     }
 
     return (
-        <main>
+        <ContentContainer>
             <Date />
-            <ul>
+            <NavList>
                 <li><Link to="/login">Login</Link></li>
                 <li><Link to="/register" className="active">Registration</Link></li>
-            </ul>
+            </NavList>
             <RegisterForm submit={onRegister}/>
-        </main>
+        </ContentContainer>
     );
 }
 

@@ -1,11 +1,7 @@
 import moment from "moment";
-
-import "./Date.scss";
+import Time from "../../styled/Time";
 
 export default function Date() {
     const date = moment().format("MMM DD, YYYY")
-
-    return (
-        <time>Today {date}</time>
-    )
+    return <Time>Today {date}</Time>
 }

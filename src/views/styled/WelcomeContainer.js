@@ -1,8 +1,8 @@
-@import "../../../variables";
+import styled from "styled-components";
 
-header {
+const WelcomeContainer = styled.header`
     min-height: 100vh;
-    background-color: $welcomeBackground;
+    background-color: ${({theme}) => theme.welcomeBackground};
     padding: 4em 4em 0 4em;
     
     @media screen and (max-width: 768px){
@@ -31,7 +31,9 @@ header {
         }
 
         p {
-            color: $textSecondary;
+            color: ${({theme}) => theme.textSecondary};
         }
     }
-}
+`
+
+export default WelcomeContainer;

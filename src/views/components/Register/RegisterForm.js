@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { createNotification } from "../../../utilities/helpers";
+
+import { PrimaryButton, SecondaryButton } from "../../styled/Button";
+import { LinkContainer, LinkText } from "../../styled/Link";
+import SecondaryText from "../../styled/SecondaryText";
+import { FormActions } from "../../styled/forms/FormActions";
+import { FormBody } from "../../styled/forms/FormBody";
+import { FormHeaderMarginTop, FormHeaderNoSpacing } from "../../styled/forms/FormHeaders";
+import { FormInput, FormSelect } from "../../styled/forms/FormInputs";
+import { FormItemRow } from "../../styled/forms/FormItemRow";
+import { FormLabel } from "../../styled/forms/FormLabels";
+
 import InputPassword from "../../UI/InputPassword/InputPassword";
+
 import { minLength2 } from "../../utilities/validate";
 
 export default function RegisterForm({ submit }){
@@ -46,13 +58,13 @@ export default function RegisterForm({ submit }){
 
     return (
         <form onSubmit={handleOnSubmitForm}>
-            <div className="form-body">
-                <h2 className="form-header no-space">Create New Account</h2>
-                <p className="secondary-text">Before you can invest here, please create new account</p>
-                <h2 className="form-header mt-2">Account Detail</h2>
-                <div className="form-item">
-                    <label htmlFor="countryCode" className="form-label">Select Country</label>
-                    <select 
+            <FormBody>
+                <FormHeaderNoSpacing>Create New Account</FormHeaderNoSpacing>
+                <SecondaryText className="secondary-text">Before you can invest here, please create new account</SecondaryText>
+                <FormHeaderMarginTop>Account Detail</FormHeaderMarginTop>
+                <FormItemRow>
+                    <FormLabel htmlFor="countryCode">Select Country</FormLabel>
+                    <FormSelect 
                         className="form-select" 
                         name="countryCode" 
                         id="countryCode" 
@@ -60,11 +72,11 @@ export default function RegisterForm({ submit }){
                         onChange={handleOnChangeCountry}
                     >
                         {countries}
-                    </select>
-                </div>
-                <div className="form-item">
-                    <label htmlFor="phone" className="form-label">Phone Number</label>
-                    <input 
+                    </FormSelect>
+                </FormItemRow>
+                <FormItemRow>
+                    <FormLabel htmlFor="phone">Phone Number</FormLabel>
+                    <FormInput 
                         className="form-input" 
                         type="number" 
                         id="phone" 
@@ -72,25 +84,25 @@ export default function RegisterForm({ submit }){
                         placeholder="Including your country code"
                         onChange={onChangePhone}
                     />
-                </div>
-                <div className="form-item">
-                    <label htmlFor="password" className="form-label">Password</label>
+                </FormItemRow>
+                <FormItemRow className="form-item">
+                    <FormLabel htmlFor="password">Password</FormLabel>
                     <InputPassword 
                         className="form-input" 
                         id="password" 
                         name="password"
                         onChange={onChangePassword}
                     />
-                </div>
-            </div>
-            <div className="link">
+                </FormItemRow>
+            </FormBody>
+            <LinkContainer>
                 <img src="/assets/download.svg" alt="Terms and Conditions icon" />
-                <p className="link-text">Terms and Conditions</p>
-            </div>
-            <div className="form-action">
-                <button className="btn primary-btn" type="reset">Reset</button>
-                <button className="btn secondary-btn" type="submit">Register</button>
-            </div>
+                <LinkText>Terms and Conditions</LinkText>
+            </LinkContainer>
+            <FormActions>
+                <PrimaryButton type="reset">Reset</PrimaryButton>
+                <SecondaryButton type="submit">Register</SecondaryButton>
+            </FormActions>
         </form>
     );
 }

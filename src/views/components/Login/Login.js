@@ -1,12 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 import { login } from "../../../state/ducks/profile/actions";
 
-import Date from "../Date";
+import Date from "../../UI/Date";
 import LoginForm from "./LoginForm";
 
-import "./Login.scss";
+import NavList from "../../styled/NavList";
+import ContentContainer from "../../styled/ContentContainer";
+
+export const ContentSection = styled.main`
+    position: relative;
+    min-height: 100vh;
+    background-color: ${({theme}) => theme.background};
+    padding: 4em 15em 0 4em;
+`; 
 
 export function Login({ login }){
 
@@ -18,14 +27,14 @@ export function Login({ login }){
     }
 
     return (
-        <main>
+        <ContentContainer>
             <Date />
-            <ul>
+            <NavList>
                 <li><Link to="/login" className="active">Login</Link></li>
                 <li><Link to="/register">Registration</Link></li>
-            </ul>
+            </NavList>
             <LoginForm login={onLogin}/>
-        </main>
+        </ContentContainer>
     );
 }
 

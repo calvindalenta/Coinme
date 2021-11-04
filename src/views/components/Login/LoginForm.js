@@ -1,9 +1,17 @@
 import { useState } from "react";
 
+import { FormActions } from "../../styled/forms/FormActions";
+import { FormBody } from "../../styled/forms/FormBody";
+import { FormHeader } from "../../styled/forms/FormHeaders";
+import { FormItemRow } from "../../styled/forms/FormItemRow";
+import { FormLabel } from "../../styled/forms/FormLabels";
+import { FormInput } from "../../styled/forms/FormInputs";
+
 import InputPassword from "../../UI/InputPassword/InputPassword";
 
 import { minLength2 } from "../../utilities/validate";
 import { createNotification } from "../../../utilities/helpers";
+import { PrimaryButton, SecondaryButton } from "../../styled/Button";
 
 export default function LoginForm({ login }){
 
@@ -37,11 +45,11 @@ export default function LoginForm({ login }){
 
     return (
         <form onSubmit={handleOnSubmitForm}>
-            <div className="form-body">
-                <h2 className="form-header">Login Account</h2>
-                <div className="form-item">
-                    <label htmlFor="phone" className="form-label">Phone Number</label>
-                    <input 
+            <FormBody className="form-body">
+                <FormHeader>Login Account</FormHeader>
+                <FormItemRow>
+                    <FormLabel htmlFor="phone">Phone Number</FormLabel>
+                    <FormInput 
                         className="form-input" 
                         type="number" 
                         id="phone" 
@@ -49,21 +57,21 @@ export default function LoginForm({ login }){
                         placeholder="Including your country code"
                         onChange={onChangePhone}
                     />
-                </div>
-                <div className="form-item">
-                    <label htmlFor="password" className="form-label">Password</label>
+                </FormItemRow>
+                <FormItemRow>
+                    <FormLabel htmlFor="password">Password</FormLabel>
                     <InputPassword 
                         className="form-input" 
                         id="password" 
                         name="password"
                         onChange={onChangePassword}
                     />
-                </div>
-            </div>
-            <div className="form-action">
-                <button className="btn primary-btn" type="reset">Reset</button>
-                <button className="btn secondary-btn" type="submit">Login</button>
-            </div>
+                </FormItemRow>
+            </FormBody>
+            <FormActions>
+                <PrimaryButton type="reset">Reset</PrimaryButton>
+                <SecondaryButton type="submit">Login</SecondaryButton>
+            </FormActions>
         </form>
     );
 }
