@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { login } from "../../../state/ducks/profile/actions";
 
+import Date from "../Date";
 import LoginForm from "./LoginForm";
 
 import "./Login.scss";
@@ -18,10 +19,10 @@ export function Login({ login }){
 
     return (
         <main>
-            <time className="date">Today Aug 29, 2020</time>
+            <Date />
             <ul>
                 <li><Link to="/login" className="active">Login</Link></li>
-                <li><Link to="/register" className="active">Registration</Link></li>
+                <li><Link to="/register">Registration</Link></li>
             </ul>
             <LoginForm login={onLogin}/>
         </main>

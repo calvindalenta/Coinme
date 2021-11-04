@@ -9,6 +9,8 @@ import RegisterPage from "../pages/RegisterPage";
 import ProfilePage from "../pages/ProfilePage";
 import NotFoundPage from "../pages/NotFoundPage";
 
+import DefaultRoute from "../routes/default";
+
 import 'react-notifications/lib/notifications.css';
 
 const GuestLoginPage = withGuest(LoginPage)
@@ -19,6 +21,7 @@ export function App() {
     return (
         <>
             <Routes>
+                <Route exact path="/" element={<DefaultRoute />} />
                 <Route path="/login" element={<GuestLoginPage />} />
                 <Route path="/register" element={<GuestRegisterPage />}/>
                 <Route path="/profile" element={<PrivateProfilePage />}/>
