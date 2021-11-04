@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { createNotification } from "../../../utilities/helpers";
 import InputPassword from "../../UI/InputPassword/InputPassword";
+import { minLength2 } from "../../utilities/validate";
 
 export default function RegisterForm({ submit }){
 
@@ -9,6 +11,23 @@ export default function RegisterForm({ submit }){
 
     async function handleOnSubmitForm(e) {
         e.preventDefault();
+
+        const checkPhone = minLength2(phoneNumber)
+        const checkPassword = minLength2(password)
+
+        if (!country.code) {
+            createNotification("error", "Country field is required")
+            return
+        }
+        if (checkPhone) {
+            createNotification("error", checkPhone)
+            return
+        }
+        if (checkPassword) {
+            createNotification("error", checkPassword)
+            return
+        }
+
         submit(phoneNumber, password, country)
     }
 

@@ -1,5 +1,9 @@
 import { useState } from "react";
+
 import InputPassword from "../../UI/InputPassword/InputPassword";
+
+import { minLength2 } from "../../utilities/validate";
+import { createNotification } from "../../../utilities/helpers";
 
 export default function LoginForm({ login }){
 
@@ -8,6 +12,18 @@ export default function LoginForm({ login }){
 
     async function handleOnSubmitForm(e) {
         e.preventDefault();
+
+        const checkPhone = minLength2(phoneNumber)
+        const checkPassword = minLength2(password)
+        if (checkPhone) {
+            createNotification("error", checkPhone)
+            return
+        }
+        if (checkPassword) {
+            createNotification("error", checkPassword)
+            return
+        }
+
         login(phoneNumber, password)
     }
 

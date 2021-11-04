@@ -1,5 +1,6 @@
 import * as types from "./types"
 import { getToken, getUserProfile } from "./selectors";
+import { createNotification } from "../../../utilities/helpers";
 
 export const updateProfile = (newProfile) => {
     return {
@@ -18,6 +19,8 @@ export const logout = () => (dispatch, getState, api) => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("token_type");
 
+    createNotification("info", "Logout successful")
+
     dispatch({
         type: types.LOG_OUT
     })
@@ -29,6 +32,8 @@ export const login = (phoneNumber, password) => async (dispatch, getState, api) 
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("token_type", token_type);
 
+    createNotification("info", "Login successful")
+
     dispatch({
         type: types.LOG_IN,
         payload: {access_token, token_type}
@@ -37,7 +42,7 @@ export const login = (phoneNumber, password) => async (dispatch, getState, api) 
 
 export const register = (phoneNumber, password) => async (dispatch, getState, api) => {
     const { success } = await api.register(phoneNumber, password)
-    if (success); // push history and show notification
+    if (success) createNotification("info", "Register successful. Please login.")
 }
 
 export const loadProfile = () => async (dispatch, getState, api) => {
