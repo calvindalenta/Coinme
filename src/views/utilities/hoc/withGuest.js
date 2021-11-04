@@ -4,7 +4,7 @@ import { isLoggedIn } from "../../../state/ducks/profile/selectors";
 
 export default function withGuest(WrappedComponent) {
     const Auth = ({ isAuthenthicated, ...rest }) => {
-        return !isAuthenthicated ? <WrappedComponent {...rest} /> : <Navigate to="/" /> 
+        return !isAuthenthicated ? <WrappedComponent {...rest} /> : <Navigate to="/profile" /> 
     }
     const mapStateToProps = (state) => ({ isAuthenthicated: isLoggedIn(state) })
     return connect(mapStateToProps)(Auth);

@@ -18,7 +18,6 @@ const PrivateProfilePage = withAuth(ProfilePage)
 export function App() {
     return (
         <>
-            <h1>H!</h1>
             <Routes>
                 <Route path="/login" element={<GuestLoginPage />} />
                 <Route path="/register" element={<GuestRegisterPage />}/>
