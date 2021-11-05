@@ -1,6 +1,6 @@
+import { createNotification } from "../../../utilities/helpers";
 import * as types from "./types"
 import { getToken, getUserProfile } from "./selectors";
-import { createNotification } from "../../../utilities/helpers";
 
 export const updateProfile = (newProfile) => {
     return {
@@ -55,27 +55,27 @@ export const loadProfile = () => async (dispatch, getState, api) => {
     })
 }
 
-export const postProfile = (token, name, gender, birthday, hometown, bio) => async (dispatch, getState, api) => {
-    const { newProfile } = await api.postProfile(getUserProfile(getState), token, name, gender, birthday, hometown, bio)
+export const postProfile = (name, gender, birthday, hometown, bio) => async (dispatch, getState, api) => {
+    const { newProfile } = await api.postProfile(getUserProfile(getState()), getToken(getState()), name, gender, birthday, hometown, bio)
     dispatch(updateProfile(newProfile))
 }
 
-export const postProfilePicture = (token, imageUrl) => async (dispatch, getState, api) => {
-    const { newProfile } = await api.postProfilePicture(getUserProfile(getState), token, imageUrl)
+export const postProfilePicture = (imageUrl) => async (dispatch, getState, api) => {
+    const { newProfile } = await api.postProfilePicture(getUserProfile(getState()), getToken(getState()), imageUrl)
     dispatch(updateProfile(newProfile))
 }
 
-export const postCoverImage = (token, imageUrl) => async (dispatch, getState, api) => {
-    const { newProfile } = await api.postCoverImage(getUserProfile(getState), token, imageUrl)
+export const postCoverImage = (imageUrl) => async (dispatch, getState, api) => {
+    const { newProfile } = await api.postCoverImage(getUserProfile(getState()), getToken(getState()), imageUrl)
     dispatch(updateProfile(newProfile))
 }
 
-export const postCareer = (token, companyName, startingFrom, endingIn) => async (dispatch, getState, api) => {
-    const { newProfile } = await api.postCareer(getUserProfile(getState), token, companyName, startingFrom, endingIn)
+export const postCareer = (companyName, startingFrom, endingIn) => async (dispatch, getState, api) => {
+    const { newProfile } = await api.postCareer(getUserProfile(getState()), getToken(getState()), companyName, startingFrom, endingIn)
     dispatch(updateProfile(newProfile))
 }
 
-export const postEducation = (token, schoolName, graduationTime) => async (dispatch, getState, api) => {
-    const { newProfile } = await api.postEducation(getUserProfile(getState), token, schoolName, graduationTime)
+export const postEducation = (schoolName, graduationTime) => async (dispatch, getState, api) => {
+    const { newProfile } = await api.postEducation(getUserProfile(getState()), getToken(getState()), schoolName, graduationTime)
     dispatch(updateProfile(newProfile))
 }
