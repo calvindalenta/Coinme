@@ -1,6 +1,7 @@
 import * as types from "./types";
 
 const initialState = {
+    loaded: false,
     auth: {
         access_token: localStorage.getItem("access_token") || "",
         token_type: localStorage.getItem("token_type") || "",
@@ -40,9 +41,9 @@ export default function profileReducer(state = initialState, action) {
         case types.LOG_OUT:
             return { ...state, auth: initialState.auth };
         case types.LOAD_PROFILE:
-            return { ...state, profile: action.payload };
+            return { ...state, profile: action.payload, loaded: true };
         case types.CLEAR_PROFILE:
-            return { ...state, profile: initialState.profile };
+            return { ...state, profile: initialState.profile, loaded: true };
         case types.UPDATE_PROFILE:
             return { ...state, profile: action.payload }
         default:

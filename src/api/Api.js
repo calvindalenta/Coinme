@@ -45,6 +45,15 @@ class Api {
         return Promise.resolve(newProfile)
     }
 
+    postUserPicture(currentProfile, token, imageUrl) {
+        if (!token) throw Error("Missing required parameter 'token'");
+        const newProfile = { 
+            ...currentProfile,
+            user_pictures: [...currentProfile.user_pictures, imageUrl]
+        }
+        return Promise.resolve(newProfile)
+    }
+
     postCoverImage(currentProfile, token, imageUrl) {
         if (!token) throw Error("Missing required parameter 'token'");
         const newProfile = { 

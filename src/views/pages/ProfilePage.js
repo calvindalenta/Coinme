@@ -1,5 +1,6 @@
 import AppContainer from "../styled/AppContainer";
 import Header from "../components/Header";
+import Profile from "../components/Profile";
 
 export default function ProfilePage(props){
     document.title = "Coinme - Profile";
@@ -7,7 +8,7 @@ export default function ProfilePage(props){
     return (
         <AppContainer>
             <Header />
-            <p>Profile page here!</p>
+            <Profile />
         </AppContainer>
     );
 }

@@ -35,6 +35,11 @@ export const AccentLabel = styled.label`
     font-family: 'Roboto', 'Poppins', sans-serif;
 `;
 
+export const LogoutButton = styled(AccentLabel)`
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+`;
+
 export const ClickableImage = styled.img`
     cursor: pointer;
 `
