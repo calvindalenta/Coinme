@@ -5,4 +5,8 @@ export const FormBody = styled.div`
     border-radius: 8px;
     padding: 1em 2em;
     margin: 3em 0 0 0;
+
+    @media screen and (max-width: 400px){
+        padding: 1em;
+    }
 `;
