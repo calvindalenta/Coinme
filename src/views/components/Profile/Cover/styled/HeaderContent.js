@@ -10,6 +10,10 @@ const HeaderContent = styled.div`
     grid-template-columns: auto auto;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 600px){
+        width: 95%;
+    }
 `;
 
 export default HeaderContent;
